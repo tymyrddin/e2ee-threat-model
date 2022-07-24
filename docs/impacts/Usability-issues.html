@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>↑ Usability issues &mdash; E2EE Threat model</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="↑ Backdoors" href="Backdoors.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> E2EE threat model
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Adversaries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/E2EE-adversary.html">E2EE adversary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Malicious-group-member.html">Malicious group member</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Malicious-user.html">Malicious user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Service-provider.html">Service provider</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Assets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Cipher.html">Cipher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Cloud-and-storage-systems.html">Cloud and storage systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Databases.html">Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Identity-providers.html">Identity providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Keyrings.html">Keyrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Messages-and-emails.html">Messages &amp; Emails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Web-applications.html">Web applications</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Attack vectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Backdoor.html">Backdoor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Ghost-protocols.html">Ghost protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Insecure-encryption-algorithms.html">Insecure encryption algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Unencrypted-backups.html">Unencrypted backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Unencrypted-metadata.html">Unencrypted metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Vulnerable-endpoints.html">Vulnerable endpoints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Attacks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Chosen-ciphertext-attack.html">Chosen ciphertext attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Chosen-plaintext-attack.html">Chosen plaintext attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Forgery-attack.html">Forgery attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Impersonation-attack.html">Impersonation attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/MitM-client-to-server-HTTPS-attack.html">MitM client-to-server HTTPS attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/MitM-server-to-server-HTTPS-attack.html">MitM server-to-server HTTPS attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Replay-attack.html">Replay attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Side-channel-attack.html">Side-channel attack</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Threats</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../threats/Automated-verification.html">Automated verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threats/Changed-message-order-and-delivery.html">Changed message order and delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threats/Data-tampering.html">Data tampering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threats/Plaintext-leaks.html">Plaintext leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threats/Public-keyring-identities-leakage.html">Public keyring identities leakage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../threats/TLSSSL-PKI-vulnerabilities.html">TLS/SSL PKI vulnerabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Impacts</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Backdoors.html">↑ Backdoors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">↑ Usability issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://tymyrddin.github.io/threat-models/">Overview threat models</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://tymyrddin.github.io/attack-trees/docs/crypto/README.html">Crypto attack trees</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">E2EE threat model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>↑ Usability issues</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/impacts/Usability-issues.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="usability-issues">
+<h1>↑ Usability issues<a class="headerlink" href="#usability-issues" title="Permalink to this heading"></a></h1>
+<p>Svenja Schroeder, Markus Huber, David Wind, and Christoph Rottermanner, did a user study with 28 participants on the usability of Signal’s security features, the state-of-the-art application for secure mobile messaging <a class="reference external" href="https://web.archive.org/web/20160828135326/https://www.internetsociety.org/sites/default/files/09%20when-signal-hits-the-fan-on-the-usability-and-security-of-state-of-the-art-secure-mobile-messaging.pdf">When SIGNAL hits the Fan: On the Usability and Security of State-of-the-Art Secure Mobile Messaging, Svenja Schröder, Markus Huber, David Wind, Christoph Rottermanner, 2016</a>. Their study consisted of two parts: a usability study of the app with focus on its instant messaging and security features, and the execution of an actual MITM attack with a subsequent assessment of the users’ reactions. Their results showed that 21 of 28 participants failed to compare encryption keys to verify the identity of other users. The majority of these users however believed they succeeded while in reality they failed.</p>
+<p>Usability problems, in terms of missing support, can lead to serious security breaches, e.g. aborting the re-establishment of a secure connection after an attack. The gaps between self-assessment, mental models of differing correctness respectively level of detail as well as actual outcome (un/successful defense) could be explained in several ways (not necessarily excluding each other):</p>
+<ul class="simple">
+<li><p>Either participants lacked the required knowledge</p></li>
+<li><p>The app failed to support the users</p></li>
+<li><p>Users simply had a different understanding of what “verification” meant</p></li>
+<li><p>The effort for successful defense was simply too high</p></li>
+</ul>
+<p>During the MITM attack, SIGNAL was explicitly hinting at the fact that the connection could have been compromised. The fact that only 7 participants assumed the possibility of a MITM attack and only 3 thought that Bob reinstalled the app seem quite surprising. Either those users ignored, or did not read, the informational error message or simply excluded the possibility of an attack/reinstallation while remaining under the false illusion of security. The different strategies for verification and mitigation definitely hint at flawed mental models: users seem to lack an understanding of end-to-end encryption in general, possible attack scenarios and risk potentials <a class="reference external" href="https://www.eff.org/deeplinks/2018/03/secure-messaging-more-secure-mess">Secure Messaging? More Like A Secure Mess., EFF, 2018</a>.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Backdoors.html" class="btn btn-neutral float-left" title="↑ Backdoors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+        <a href="https://unseen-uni.netlify.app/">Unseen University</a>, 2022
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TLS/SSL PKI vulnerabilities &mdash; E2EE Threat model</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="↑ Backdoors" href="../impacts/Backdoors.html" />
+    <link rel="prev" title="Public keyring identities leakage" href="Public-keyring-identities-leakage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> E2EE threat model
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Adversaries</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/E2EE-adversary.html">E2EE adversary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Malicious-group-member.html">Malicious group member</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Malicious-user.html">Malicious user</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adversaries/Service-provider.html">Service provider</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Assets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Cipher.html">Cipher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Cloud-and-storage-systems.html">Cloud and storage systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Databases.html">Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Identity-providers.html">Identity providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Keyrings.html">Keyrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Messages-and-emails.html">Messages &amp; Emails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../assets/Web-applications.html">Web applications</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Attack vectors</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Backdoor.html">Backdoor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Ghost-protocols.html">Ghost protocols</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Insecure-encryption-algorithms.html">Insecure encryption algorithms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Unencrypted-backups.html">Unencrypted backups</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Unencrypted-metadata.html">Unencrypted metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attack-vectors/Vulnerable-endpoints.html">Vulnerable endpoints</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Attacks</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Chosen-ciphertext-attack.html">Chosen ciphertext attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Chosen-plaintext-attack.html">Chosen plaintext attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Forgery-attack.html">Forgery attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Impersonation-attack.html">Impersonation attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/MitM-client-to-server-HTTPS-attack.html">MitM client-to-server HTTPS attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/MitM-server-to-server-HTTPS-attack.html">MitM server-to-server HTTPS attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Replay-attack.html">Replay attack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../attacks/Side-channel-attack.html">Side-channel attack</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Threats</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Automated-verification.html">Automated verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Changed-message-order-and-delivery.html">Changed message order and delivery</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data-tampering.html">Data tampering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Plaintext-leaks.html">Plaintext leaks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Public-keyring-identities-leakage.html">Public keyring identities leakage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TLS/SSL PKI vulnerabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Impacts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../impacts/Backdoors.html">↑ Backdoors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../impacts/Usability-issues.html">↑ Usability issues</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://tymyrddin.github.io/threat-models/">Overview threat models</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://tymyrddin.github.io/attack-trees/docs/crypto/README.html">Crypto attack trees</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">E2EE threat model</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>TLS/SSL PKI vulnerabilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/docs/threats/TLSSSL-PKI-vulnerabilities.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tls-ssl-pki-vulnerabilities">
+<h1>TLS/SSL PKI vulnerabilities<a class="headerlink" href="#tls-ssl-pki-vulnerabilities" title="Permalink to this heading"></a></h1>
+<p>SSL and TLS are commonly used by web browsers to protect connections between web applications and web servers. Many other TCP-based protocols use TLS/SSL as well, including email (SMTP/POP3), instant messaging (XMPP), FTP, VoIP, VPN, etc. …</p>
+<section id="vulnerabilties">
+<h2>Vulnerabilties<a class="headerlink" href="#vulnerabilties" title="Permalink to this heading"></a></h2>
+<p>SSL version flaws, use of weak ciphers (less than 128 bit), certificate keys (less than 1024 bits), client vulnerabilities, server vulnerabilities, and application vulnerabilities.</p>
+<section id="known-vulnerabilties">
+<h3>Known vulnerabilties<a class="headerlink" href="#known-vulnerabilties" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>The Decrypting RSA with Obsolete and Weakened eNcryption (DROWN) vulnerability allows an attacker who has a man-in-the-middle to break the encryption of a TLS connection. It affects servers still supporting SSLv2 or servers that share a private key with any other server that allows SSLv2 (even for other protocols).</p></li>
+<li><p>The Factoring RSA Keys (FREAK) vulnerability allows an attacker with a man-in-the-middle attack to reduce the security offered by SSL/TLS by forcing a connection to use “Export-grade” grade encryption – which reduces the RSA strength to 512 bits, which is easily breakable.</p></li>
+<li><p>The Bar Mitzvah attack recovers small amounts of plaintext data (the least significant bit of 100 bytes from the encrypted stream) from an SSL/TLS session protected using the RC4 cipher.</p></li>
+<li><p>The Sweet32 attack is a birthday attack against 64-bit block ciphers such as DES and 3DES and requires a man-in-the-middle attack capable of capturing a long-lived HTTPS connection (bypassing the protections offered by the secure flag on cookies by using a SOP bypass or cross-site scripting).</p></li>
+<li><p>The Padding Oracle On Downgraded Legacy Encryption (POODLE) attack was published in October 2014 and takes advantage of some servers/clients still supporting SSL 3.0 for interoperability and compatibility with legacy systems and a vulnerability in SSL 3.0 related to block padding.</p></li>
+<li><p>The Browser Exploit Against SSL/TLS (BEAST) attack involves determining the Initialisation Vector utilised as part of the encryption process but is limited in that it is only possible to retrieve small pieces of data, such as session tokens. The attacker must have a man-in-the-middle a connection and there must be a way of generating additional traffic (SOP bypass or cross-site scripting, requires an older browser). If session tokens are protected against XSS through HttpOnly cookies then an adversary can use BEAST to gain access to the tokens.</p></li>
+<li><p>The Compression Ratio Info-leak Made Easy (CRIME) requires a man-in-the-middle connection and the ability to repeatedly inject predictable data whilst monitoring the resulting encrypted traffic, for example by cross-site scripting attacks. For CRIME to be possible the client and server must support compression of the request before encryption. Both DEFLATE and SPDY (compression algorithms) are vulnerable.</p></li>
+<li><p>The Browser Reconnaissance and Exfiltration via Adaptive Compression of Hypertext (BREACH) vulnerability targets HTTP compression, not TLS compression. An adversary can force the victim’s browser to connect to a TLS-enabled third-party website after which she can monitor the traffic between the victim and the server using a man-in-the-middle attack. A vulnerable web application must satisfy the following conditions for the attack to work:</p>
+<ul>
+<li><p>Be served from a server that uses HTTP-level compression</p></li>
+<li><p>Reflect user input in HTTP response bodies</p></li>
+<li><p>Reflect a secret (such as a CSRF token) in HTTP response bodies (therefore values in HTTP headers, such as cookies, are safe from this attack).</p></li>
+</ul>
+</li>
+<li><p>Heartbleed was a critical vulnerability that was found in the heartbeat extension of the popular OpenSSL library.</p></li>
+</ul>
+</section>
+</section>
+<section id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>2016-2183: The DES and Triple DES ciphers, as used in the TLS, SSH, and IPSec protocols and other protocols and products, have a birthday bound of approximately four billion blocks, which makes it easier for remote attackers to obtain cleartext data via a birthday attack against a long-duration encrypted session, as demonstrated by an HTTPS session using Triple DES in CBC mode, aka a “Sweet32” attack.</p></li>
+<li><p>CVE-2016-0800: The SSLv2 protocol, as used in OpenSSL before 1.0.1s and 1.0.2 before 1.0.2g and other products, requires a server to send a ServerVerify message before establishing that a client possesses certain plaintext RSA data, which makes it easier for remote attackers to decrypt TLS ciphertext data by leveraging a Bleichenbacher RSA padding oracle, aka a “DROWN” attack.</p></li>
+<li><p>CVE-2015-0204: The ssl3_get_key_exchange function in s3_clnt.c in OpenSSL before 0.9.8zd, 1.0.0 before 1.0.0p, and 1.0.1 before 1.0.1k allows remote SSL servers to conduct RSA-to-EXPORT_RSA downgrade attacks and facilitate brute-force decryption by offering a weak ephemeral RSA key in a noncompliant role, related to the “FREAK” issue. Also see CVE-2015-1637 and CVE-2015-1067.</p></li>
+<li><p>CVE-2015-2808: The RC4 algorithm, as used in the TLS protocol and SSL protocol, does not properly combine state data with key data during the initialization phase, which makes it easier for remote attackers to conduct plaintext-recovery attacks against the initial bytes of a stream by sniffing network traffic that occasionally relies on keys affected by the Invariance Weakness, and then using a brute-force approach involving LSB values, aka the “Bar Mitzvah” issue.</p></li>
+<li><p>CVE-2014-3566: The SSL protocol 3.0, as used in OpenSSL through 1.0.1i and other products, uses nondeterministic CBC padding, which makes it easier for man-in-the-middle attackers to obtain cleartext data via a padding-oracle attack, aka the “POODLE” issue.</p></li>
+<li><p>CVE-2011-3389: The SSL protocol, as used in certain configurations in Microsoft Windows and Microsoft Internet Explorer, Mozilla Firefox, Google Chrome, Opera, and other products, encrypts data by using CBC mode with chained initialization vectors, which allows man-in-the-middle attackers to obtain plaintext HTTP headers via a blockwise chosen-boundary attack (BCBA) on an HTTPS session, in conjunction with JavaScript code that uses (1) the HTML5 WebSocket API, (2) the Java URLConnection API, or (3) the Silverlight WebClient API, aka a “BEAST” attack.</p></li>
+<li><p>CVE-2012-4929: The TLS protocol 1.2 and earlier, as used in Mozilla Firefox, Google Chrome, Qt, and other products, can encrypt compressed data without properly obfuscating the length of the unencrypted data, which allows man-in-the-middle attackers to obtain plaintext HTTP headers by observing length differences during a series of guesses in which a string in an HTTP request potentially matches an unknown string in an HTTP header, aka a “CRIME” attack.</p></li>
+<li><p>CVE-2013-3587: A CVE Entry is marked as “RESERVED” when it has been reserved for use by a CVE Numbering Authority (CNA) or security researcher, but the details of it are not yet populated.</p></li>
+<li><p>CVE-2014-0160: The (1) TLS and (2) DTLS implementations in OpenSSL 1.0.1 before 1.0.1g do not properly handle Heartbeat Extension packets, which allows remote attackers to obtain sensitive information from process memory via crafted packets that trigger a buffer over-read, as demonstrated by reading private keys, related to d1_both.c and t1_lib.c, aka the Heartbleed bug.</p></li>
+</ul>
+<section id="mitigations">
+<h3>Mitigations<a class="headerlink" href="#mitigations" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Do not use SSL 3.0 on a server (this will be a problem if Internet Explorer 6.0 must still be supported). Use TLS 1.1 or TLS 1.2</p></li>
+<li><p>Most current browsers/servers use TLS_FALLBACK_SCSV. If a client requests a TLS protocol version that is lower than the highest supported by the server (and client), the server will treat it as an intentional downgrade and drop the connection.</p></li>
+<li><p>Do not accept an incorrect padding structure after decryption.</p></li>
+<li><p>Disable HTTP compression.</p></li>
+<li><p>Separate secrets from user input.</p></li>
+<li><p>Randomize secrets per request.</p></li>
+<li><p>Mask secrets (randomize by XORing with a random secret per request).</p></li>
+<li><p>Protect pages against injections.</p></li>
+<li><p>Hide length (for example by adding random numbers of bytes to responses).</p></li>
+<li><p>Limit the rate of requests.</p></li>
+<li><p>Use the latest version of OpenSSL or recompile the already installed version with -DOPENSSL_NO_HEARTBEATS.</p></li>
+<li><p>The NULL cipher suites inform the browser not to encrypt data, therefore nullifying any protection given through the use of SSL/TLS. Do not have NULL.</p></li>
+<li><p>Disable RC2 and SHA-1.</p></li>
+<li><p>Consider disabling RC4 (Bar Mitvah), DES and 3DES (Sweet32).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Public-keyring-identities-leakage.html" class="btn btn-neutral float-left" title="Public keyring identities leakage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../impacts/Backdoors.html" class="btn btn-neutral float-right" title="↑ Backdoors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+        <a href="https://unseen-uni.netlify.app/">Unseen University</a>, 2022
+
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>
